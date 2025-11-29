@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "569268822074",
+    "project_id": "stocktask-3bec5",
+    "storage_bucket": "stocktask-3bec5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569268822074:android:f6543b564afe13e788d503",
+        "android_client_info": {
+          "package_name": "com.example.stock_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCChbaA3ubxpQ64T7RobZx0Bdh0IrpTQGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
