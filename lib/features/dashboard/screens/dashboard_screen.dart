@@ -82,8 +82,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         titleColor: const Color(0xFF4C7DFF),
                         labels: labels,
                         values: [500, 1000, 700, 1300, 243, 600],
-                        highlightGradient: const LinearGradient(
-                          colors: [Color(0xFF4C7DFF), Color(0xFF408CFF)],
+                        highlightGradient: LinearGradient(
+                          colors: [
+                            ColorPalette.primary,
+                            Colors.lightBlueAccent,
+                          ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                         ),
@@ -93,8 +96,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         titleColor: Color(0xFF17C964),
                         labels: labels2,
                         values: [900, 1500, 1100, 800, 1400, 950],
-                        highlightGradient: const LinearGradient(
-                          colors: [Color(0xFF17C964), Color(0xFF0EA75A)],
+                        highlightGradient: LinearGradient(
+                          colors: [Colors.green, Colors.lightGreen],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                         ),

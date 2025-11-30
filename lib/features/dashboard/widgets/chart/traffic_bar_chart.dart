@@ -169,7 +169,7 @@ class _TrafficBarChartState extends State<TrafficBarChart> {
                     barRods: [
                       BarChartRodData(
                         toY: toY,
-                        width: 30,
+                        width: 40,
                         borderRadius: BorderRadius.circular(8),
 
                         // Selected gradient
