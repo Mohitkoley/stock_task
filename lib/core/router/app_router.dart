@@ -16,6 +16,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: DashboardRoute.page, path: RouteNames.dashboard),
     AutoRoute(page: OrderListRoute.page, path: RouteNames.orderList),
     AutoRoute(page: UserInfoRoute.page, path: RouteNames.profile),
+    AutoRoute(page: SmsOtpRoute.page, path: RouteNames.smsOtp),
   ];
 
   @override

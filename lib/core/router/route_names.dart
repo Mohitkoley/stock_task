@@ -5,4 +5,5 @@ class RouteNames {
   static const String dashboard = '/dashboard';
   static const String orderList = '/order-list';
   static const String profile = '/profile';
+  static const String smsOtp = '/sms-otp';
 }

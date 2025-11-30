@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stock_task/features/dashboard/models/order_list/order_model.dart';
+import 'package:stock_task/features/dashboard/models/project_model.dart';
+import 'package:stock_task/features/dashboard/models/stat_card_model.dart';
 import '../repositories/dashboard_repo.dart';
 
 class DashboardController extends ChangeNotifier {
@@ -49,6 +51,45 @@ class DashboardController extends ChangeNotifier {
       projectName: "App Landing Page",
       address: "Nest Lane Olivette",
       orderDate: DateTime(2024, 2, 2),
+    ),
+  ];
+
+  List<ProjectModel> projects = [
+    .new(name: "ByeWind", status: .inProgress),
+    .new(name: "Ntali Craig", status: .complete),
+    .new(name: "Drew Cano", status: .pending),
+    .new(name: "Orlando Diggs", status: .approved),
+    .new(name: "Andi Lane", status: .rejected),
+  ];
+
+  List<StatCardModel> stats = [
+    .new(
+      title: "Views",
+      value: "7,265",
+      changePercent: "+11.01%",
+      isPositive: true,
+      isBlue: true,
+    ),
+    .new(
+      title: "Visits",
+      value: "3,671",
+      changePercent: "-0.03%",
+      isPositive: false,
+      isBlue: false,
+    ),
+    .new(
+      title: "New Users",
+      value: "256",
+      changePercent: "+15.03%",
+      isPositive: true,
+      isBlue: false,
+    ),
+    .new(
+      title: "Active Users",
+      value: "2,318",
+      changePercent: "+6.08%",
+      isPositive: true,
+      isBlue: true,
     ),
   ];
 }

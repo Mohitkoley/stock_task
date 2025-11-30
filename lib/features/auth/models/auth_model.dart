@@ -1,5 +1,6 @@
-import 'dart:convert';
+class PhoneAuthModel {
+  final String phoneNumber;
+  final String verificationId;
 
-class AuthModel {
-  // TODO: Define model fields for auth
+  PhoneAuthModel({required this.phoneNumber, required this.verificationId});
 }

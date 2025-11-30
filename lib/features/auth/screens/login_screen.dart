@@ -4,11 +4,12 @@ import 'dart:ui';
 import 'package:auto_route/auto_route.dart';
 import 'package:common_extension/common_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import 'package:stock_task/const/resource.dart';
 import 'package:stock_task/core/mixin/validator_mixin.dart';
 import 'package:stock_task/core/router/app_router.gr.dart';
+import 'package:stock_task/features/auth/controllers/auth_controller.dart';
 import 'package:stock_task/features/auth/widgets/social_signin_widget.dart';
 
 @RoutePage()
@@ -21,6 +22,13 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> with ValidatorMixin {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _phoneController = .new();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _phoneController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +45,7 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorMixin {
         child: Form(
           key: _formKey,
           child: ListView(
-            padding: EdgeInsets.symmetric(
-              horizontal: context.w * 0.1,
-              vertical: context.h * 0.1,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             children: [
               Column(
                 children: [
@@ -91,7 +96,8 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorMixin {
                           color: Colors.white.withAlpha(20),
                         ),
                         child: TextFormField(
-                          validator: isValidEmail,
+                          controller: _phoneController,
+                          validator: isValidPhonNumer,
                           style: context.textTheme.bodyMedium?.copyWith(
                             color: Colors.white,
                             fontSize: 22,
@@ -118,14 +124,19 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorMixin {
                   20.hBox,
                   ElevatedButton(
                     onPressed: () {
-                      context.router.push(DashboardRoute());
+                      if (_formKey.currentState!.validate()) {
+                        // context.read<AuthController>().sendOtp(
+                        //   _phoneController.text,
+                        // );
+                        context.router.push(DashboardRoute());
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 24,
                         vertical: 20,
                       ), // reduce vertical padding
-                      minimumSize: Size(context.w * 0.8, 40), // control height
+                      minimumSize: Size(context.w, 40), // control height
                       backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),

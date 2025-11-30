@@ -19,7 +19,7 @@ class SocialSigninWidget extends StatelessWidget {
       onTap: () {},
       child: Container(
         height: 70,
-        width: context.w * 0.25,
+        width: context.w * 0.27,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(20),

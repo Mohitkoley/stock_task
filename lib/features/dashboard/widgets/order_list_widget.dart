@@ -3,6 +3,7 @@ import 'package:common_extension/num_extension/num_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:stock_task/core/theme/color_palette.dart';
 import 'package:stock_task/features/dashboard/models/order_list/order_model.dart';
+import 'package:stock_task/features/dashboard/models/status_enum.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class OrderListWidget extends StatelessWidget {
