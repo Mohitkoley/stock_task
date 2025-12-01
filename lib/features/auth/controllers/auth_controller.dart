@@ -1,48 +1,47 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import '../repositories/auth_repo.dart';
+import 'package:stock_task/core/service/local_notification_service.dart';
+import 'package:stock_task/core/service/storage_service.dart';
 
 import 'package:flutter/foundation.dart';
 
 class AuthController extends ChangeNotifier {
-  final AuthRepository _repo;
+  AuthController();
 
-  AuthController(this._repo);
+  final NotificationService _notificationService = NotificationService();
+  final StorageService _storageService = StorageService();
 
+  String? generatedOtp;
   bool isLoading = false;
-  String? verificationId;
-  String? errorMessage;
+  String? error;
+  String phone = "";
 
-  Future<void> sendOtp(String phoneNumber) async {
-    try {
-      isLoading = true;
-      notifyListeners();
+  Future<void> sendOtp(String phone) async {
+    // if (!isValidPhone(phone)) {
+    //   error = "Invalid phone number";
+    //   notifyListeners();
+    //   return;
+    // }
+    this.phone = phone;
 
-      verificationId = await _repo.sendOtp(phoneNumber);
+    isLoading = true;
+    error = null;
+    notifyListeners();
 
-      isLoading = false;
-      notifyListeners();
-    } catch (e) {
-      errorMessage = e.toString();
-      isLoading = false;
-      notifyListeners();
-    }
+    generatedOtp = (100000 + Random().nextInt(900000)).toString();
+
+    await _notificationService.showOtpNotification(generatedOtp!);
+
+    isLoading = false;
+    notifyListeners();
   }
 
-  Future<bool> verifyOtp(String otp) async {
-    try {
-      isLoading = true;
-      notifyListeners();
-
-      await _repo.verifyOtp(verificationId: verificationId!, smsCode: otp);
-
-      isLoading = false;
-      notifyListeners();
+  Future<bool> verifyOtp(String enteredOtp) async {
+    if (enteredOtp == generatedOtp) {
+      await _storageService.saveLogin(phone);
       return true;
-    } catch (e) {
-      errorMessage = e.toString();
-      isLoading = false;
-      notifyListeners();
-      return false;
     }
+    return false;
   }
 }

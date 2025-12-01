@@ -3,6 +3,9 @@ import 'package:common_extension/index.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
+import 'package:stock_task/core/di/service_locator.dart';
+import 'package:stock_task/core/router/app_router.dart';
+import 'package:stock_task/core/router/app_router.gr.dart';
 import 'package:stock_task/features/auth/controllers/auth_controller.dart';
 
 @RoutePage()
@@ -83,13 +86,15 @@ class _SmsOtpScreenState extends State<SmsOtpScreen> {
               onCompleted: (value) async {
                 bool success = await vm.verifyOtp(value);
                 if (success) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Login Successful")),
-                  );
+                  ServiceLocator.getIt<AppRouter>().replaceAll([
+                    const DashboardRoute(),
+                  ]);
+                  context.showSnack("Login Successful");
                 } else {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(const SnackBar(content: Text("Invalid OTP")));
+                  context.showSnack(
+                    "Incorrect OTP, try again.",
+                    color: Colors.redAccent,
+                  );
                 }
               },
             ),

@@ -5,6 +5,8 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stock_task/core/di/service_locator.dart';
+import 'package:stock_task/core/service/local_notification_service.dart';
+import 'package:stock_task/core/service/storage_service.dart';
 import 'package:stock_task/features/auth/repositories/auth_repo.dart';
 import 'package:stock_task/firebase_options.dart';
 import 'package:stock_task/my_app.dart';
@@ -18,15 +20,18 @@ Future main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
 
+    final notificationService = NotificationService();
+    final storageService = StorageService();
+
+    await notificationService.init();
+    await storageService.init();
+
     ServiceLocator().setup();
 
     runApp(
       MultiProvider(
         providers: [
-          ChangeNotifierProvider(
-            create: (_) =>
-                AuthController(ServiceLocator.getIt<AuthRepository>()),
-          ),
+          ChangeNotifierProvider(create: (_) => AuthController()),
           ChangeNotifierProvider(create: (_) => DashboardController()),
         ],
         child: MyApp(),

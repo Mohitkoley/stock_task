@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:stock_task/core/di/service_locator.dart';
 import 'package:stock_task/core/router/app_router.dart';
 import 'package:stock_task/core/router/observer/print_route_observer.dart';
 import 'package:stock_task/core/theme/color_palette.dart';
@@ -13,7 +14,7 @@ GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final _appRouter = AppRouter();
+  final _appRouter = ServiceLocator.getIt<AppRouter>();
 
   // This widget is the root of your application.
   @override

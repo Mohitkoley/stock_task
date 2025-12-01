@@ -125,10 +125,10 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorMixin {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        // context.read<AuthController>().sendOtp(
-                        //   _phoneController.text,
-                        // );
-                        context.router.push(DashboardRoute());
+                        context.read<AuthController>().sendOtp(
+                          _phoneController.text,
+                        );
+                        context.router.push(SmsOtpRoute());
                       }
                     },
                     style: ElevatedButton.styleFrom(

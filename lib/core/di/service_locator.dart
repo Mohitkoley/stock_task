@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:stock_task/core/router/app_router.dart';
 import 'package:stock_task/features/auth/repositories/auth_repo.dart';
 
 class ServiceLocator {
@@ -14,5 +15,6 @@ class ServiceLocator {
 
   void setup() {
     getIt.registerSingleton<AuthRepository>(AuthRepository());
+    getIt.registerSingleton<AppRouter>(AppRouter());
   }
 }
