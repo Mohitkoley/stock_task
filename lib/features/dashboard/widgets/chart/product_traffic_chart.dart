@@ -9,14 +9,12 @@ class ProductTrafficBarChart extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // ---------------- TITLE ------------------------
         const Text(
           "Location Traffic",
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 14),
 
-        // ---------------- LEGEND ------------------------
         Row(
           children: [
             _legendDot(Colors.white),
@@ -52,7 +50,6 @@ class ProductTrafficBarChart extends StatelessWidget {
     );
   }
 
-  // ---------------- BAR GROUP ------------------------
   static BarChartGroupData _group(
     int x,
     double all,
@@ -70,7 +67,6 @@ class ProductTrafficBarChart extends StatelessWidget {
     );
   }
 
-  // ---------------- SINGLE BAR ------------------------
   static BarChartRodData _rod(double value, Color color) {
     return BarChartRodData(
       toY: value,
@@ -80,7 +76,6 @@ class ProductTrafficBarChart extends StatelessWidget {
     );
   }
 
-  // ---------------- LEGEND DOT ------------------------
   static Widget _legendDot(Color color) {
     return Container(
       width: 12,

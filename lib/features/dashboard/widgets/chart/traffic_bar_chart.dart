@@ -79,7 +79,6 @@ class _TrafficBarChartState extends State<TrafficBarChart> {
                 gridData: FlGridData(show: false),
                 borderData: FlBorderData(show: false),
 
-                // ---------------- Touch / Selection & Tooltip -----------------
                 barTouchData: BarTouchData(
                   enabled: true,
                   handleBuiltInTouches: false,
@@ -106,7 +105,6 @@ class _TrafficBarChartState extends State<TrafficBarChart> {
                     fitInsideHorizontally: true,
                     fitInsideVertically: true,
 
-                    // Build the tooltip item for the touched group
                     getTooltipItem: (group, groupIndex, rod, rodIndex) {
                       final int idx = group.x.toInt();
                       if (idx < 0 || idx >= widget.values.length) return null;
@@ -158,7 +156,6 @@ class _TrafficBarChartState extends State<TrafficBarChart> {
                   ),
                 ),
 
-                // ---------------- Bars ------------------------
                 barGroups: List.generate(widget.labels.length, (i) {
                   final isSelected = selectedIndex == i;
                   final toY = _toChartY(widget.values[i]);
@@ -172,10 +169,8 @@ class _TrafficBarChartState extends State<TrafficBarChart> {
                         width: 40,
                         borderRadius: BorderRadius.circular(8),
 
-                        // Selected gradient
                         gradient: isSelected ? widget.highlightGradient : null,
 
-                        // Normal color
                         color: isSelected
                             ? null
                             : widget.normalBarColor.withAlpha(35),
