@@ -9,23 +9,19 @@ class StorageService {
 
   SharedPreferences? _prefs;
 
-  /// Initialize SharedPreferences
   Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
   }
 
-  /// Save login state
   Future<void> saveLogin(String phone) async {
     await _prefs?.setBool(loginKey, true);
     await _prefs?.setString(phoneKey, phone);
   }
 
-  /// Check if user is logged in
   bool isLoggedIn() {
     return _prefs?.getBool(loginKey) ?? false;
   }
 
-  /// Get saved phone number
   String? getPhone() {
     return _prefs?.getString(phoneKey);
   }

@@ -12,7 +12,6 @@ class NotificationService {
 
   FlutterLocalNotificationsPlugin get plugin => _plugin;
 
-  /// Initialize and request permissions
   Future<void> init() async {
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
 
@@ -23,7 +22,6 @@ class NotificationService {
     await _requestPermissions();
   }
 
-  /// Request notification permissions for Android 13+ and iOS
   Future<void> _requestPermissions() async {
     if (Platform.isAndroid) {
       // Android 13+ needs explicit notification permission
@@ -40,7 +38,6 @@ class NotificationService {
     }
   }
 
-  /// Show OTP notification
   Future<void> showOtpNotification(String otp) async {
     const androidDetails = AndroidNotificationDetails(
       'otp_channel',
